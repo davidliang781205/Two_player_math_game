@@ -1,17 +1,20 @@
-class Game < Player
-  def initialize(num_players, turn, current_player)
-    @players = []
-    @num_players = num_players
-    @turn = turn
-    @current_player = current_player
+class Game
+  attr_accessor :players
+  def initialize(players)
+    # @num_players = num_players
+    @players = players
+    @turn = 0
   end
 
-  def add_player(name)
-    @players << new Player(name)
+  # def alive_players
+  #   @players.select &alive?
+  # end
+
+  def current_player
+    players[@turn % players.length]
   end
 
   def next_turn
-    turn++
+    @turn += 1
   end
-
 end
